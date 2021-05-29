@@ -4,9 +4,7 @@ DESARROLLO DE APLICACIONES WEB Y MÓVILES
 
 Paralelo 2
 
-Grupo:
-
-Ultima Hora
+Grupo: Ultima Hora
 
 Integrantes:
 
