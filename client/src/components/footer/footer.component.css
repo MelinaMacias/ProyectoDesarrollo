@@ -1,0 +1,42 @@
+
+footer {
+
+  background-color: #fb5849;
+  padding: 20px;
+  padding-top: 40px;
+
+}
+
+.copyright {
+
+  font-family: "Poppins";
+  font-size: 1em;
+  padding-right: 100px;
+  padding-top: 6px;
+
+}
+
+.social-icons li {
+
+  list-style: none;
+  font-size: 2.5em;
+  margin-left: 10px;
+
+}
+
+@media (max-width: 991.98px) {
+
+  .social-icons {
+
+    padding-left: 0px;
+
+  }
+
+  .copyright {
+
+    margin-top: 16px;
+    padding-right: 0px;
+
+  }
+
+}
