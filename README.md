@@ -1,36 +1,47 @@
-# ProyectoDesarrollo
 
-**DESARROLLO DE APLICACIONES WEB Y MÓVILES**
+# **PROYECTO DAWM 1S-2021** 
 
-Paralelo 2
+## **Desarrollo de aplicaciones web y móviles 1S-2021**
 
-Grupo: Ultima Hora
+## **PARALELO: #2**
 
-Integrantes:
+## **Grupo:** Ultima Hora
 
-- Aron Caballero Macias
-- Jorge Luis Valenzuela Bustos
-- Maria Melina Macias Quinto
-- Emanuel Parra
+## **Integrantes:**
 
-Profesor:
+- ### Aron Caballero Macias
 
-Allan Roberto Avedaño Sudario
+- ### Jorge Luis Valenzuela Bustos
 
-**Avances:**
+- ### Maria Melina Macias Quinto
+
+- ### Emanuel Parra
+
+## **Profesor:** Allan Roberto Avedaño Sudario
+
+## **Avances:**
+
 Creación de componentes con respecto al cliente:
+
 - Menú
- ![img](https://i.imgur.com/oFrrcnq.png)
- ![img](https://i.imgur.com/gtzCcwu.png)
+
+    ![img](https://i.imgur.com/oFrrcnq.png)
+
+    ![img](https://i.imgur.com/gtzCcwu.png)
 	
 - Noticias
-![img](https://i.imgur.com/cY0Q3w2.jpg)
-![img](https://i.imgur.com/ODUVp66.jpg)
-![img](https://i.imgur.com/Chn19vm.jpg)
+
+    ![img](https://i.imgur.com/cY0Q3w2.jpg)
+
+    ![img](https://i.imgur.com/ODUVp66.jpg)
+
+    ![img](https://i.imgur.com/Chn19vm.jpg)
+
 - Itinerario de Menú (Desayuno/Almuerzo/Merienda)
 
-Planeamiento del modelo de la base de datos
+- Planeamiento del modelo de la base de datos
 
 
-Interfaz del menú
+## **Interfaz del menú**
+
 ![img](https://i.imgur.com/sP1bjJX.png)
