@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Noticia } from "./noticia.model";
+import { Noticia } from "../../models/noticia.model";
 
 @Component({
     selector: 'app-noticia',
