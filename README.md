@@ -3,19 +3,19 @@
 
 ## **Desarrollo de aplicaciones web y móviles 1S-2021**
 
-## **PARALELO: #2**
+**PARALELO: #2**
 
-## **Grupo:** Ultima Hora
+**Grupo:** Ultima Hora
 
-## **Integrantes:**
+**Integrantes:**
 
-- ### Aron Caballero Macias
+- Aron Caballero Macias
 
-- ### Jorge Luis Valenzuela Bustos
+- Jorge Luis Valenzuela Bustos
 
-- ### Maria Melina Macias Quinto
+- Maria Melina Macias Quinto
 
-- ### Emanuel Parra
+- Emanuel Parra
 
 ## **Profesor:** Allan Roberto Avedaño Sudario
 
