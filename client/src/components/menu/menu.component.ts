@@ -3,7 +3,8 @@ import {Menu} from '../../models/menu';
 
 @Component ({
     selector: 'app-menu',
-    templateUrl: './menu.component.html'
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.css']
 })
 
 
