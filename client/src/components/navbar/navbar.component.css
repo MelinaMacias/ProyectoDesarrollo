@@ -1,0 +1,29 @@
+
+.navbar {
+
+  padding: 16px;
+
+}
+
+.navbar-brand {
+
+  margin-left: 4em;
+
+}
+
+.navbar-nav {
+
+  font-weight: 500;
+  margin-right: 100px;
+
+}
+
+@media (max-width: 991.98px) {
+
+  .navbar .navbar-brand {
+
+    margin-left: 1em;
+
+  }
+
+}

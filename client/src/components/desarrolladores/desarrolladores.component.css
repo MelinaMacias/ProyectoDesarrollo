@@ -1,0 +1,31 @@
+
+#chefs {
+
+  margin-top: 0px;
+  padding: 40px;
+
+}
+
+.cards-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.social-icons a i {
+
+  margin-top: 30%;
+
+}
+
+@media (min-width: 991.98px) {
+
+  .last-items {
+
+    margin-top: 20px;
+
+  }
+
+}
