@@ -8,18 +8,21 @@ class Plato(models.Model):
     description = models.TextField()
 
     class Meta:
-        ordering = ["-id"]
         verbose_name = "Plato"
         verbose_name_plural = "Platos"
 
+    def save(self, *args, **kwargs):
+        super(Plato, self).save(*args, **kwargs)
 
 class Notice(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
+    title = models.CharField(max_length=500)
+    description = models.TextField(max_length=2000)
 
     # image = models.ImageField()
 
     class Meta:
-        ordering = ["-id"]
         verbose_name = "Notice"
         verbose_name_plural = "Noticias"
+
+    def save(self, *args, **kwargs):
+        super(Notice, self).save(*args, **kwargs)

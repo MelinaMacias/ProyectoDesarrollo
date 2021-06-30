@@ -13,4 +13,4 @@ class NoticeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Plato, PlatoAdmin)
-admin.site.register(Noticia, NoticeAdmin)
+admin.site.register(Notice, NoticeAdmin)
