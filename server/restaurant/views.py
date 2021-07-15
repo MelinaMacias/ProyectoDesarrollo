@@ -1,6 +1,10 @@
+
+import json
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import NoticeForm, PlatoForm
 from .models import *
@@ -17,7 +21,6 @@ class Index(TemplateView):
         return context
 
 
-
 """
 # class DecimalEncoder(json.JSONEncoder):
 #     def default(self, o):
@@ -29,58 +32,59 @@ class Index(TemplateView):
 #         return super(DecimalEncoder, self).default(o)
 # 
 # 
-# @csrf_exempt
-# def notices(request):
-#     if request.method == "GET":
-#         datos = Notice.objects.all()
-#         lista_persona = []
-#         for i in datos:
-#             notice = {}
-#             notice["title"] = i.title
-#             notice["description"] = i.description
-#             lista_persona.append(notice)
-#         noticias = lista_persona
-#     elif request.method == "POST":
-#         datos = json.loads(request.body.decode('utf8'))
-#         notice = Notice()
-#         notice.title = datos.get("title")
-#         notice.description = datos.get("description")
-#         notice.save()
-#         noticias = {"mensaje": "Registro exitoso"}
-#     return HttpResponse(json.dumps(noticias, ensure_ascii=False).encode("utf-8"), content_type='application/json')
-# 
-# 
-# @csrf_exempt
-# def plato(request):
-#     if request.method == "GET":
-#         datos = Plato.objects.all()
-#         lista_platos = []
-#         for i in datos:
-#             plato = {}
-#             plato["title"] = i.title
-#             plato["price"] = float(i.price)
-#             plato["description"] = i.description
-#             lista_platos.append(plato)
-#         platos = lista_platos
-#     elif request.method == "POST":
-#         datos = json.loads(request.body.decode('utf8'))
-#         try:
-#             verificacion_plato = Plato.objects.filter(title=datos.get("title"))
-#             if len(verificacion_plato) != 0:
-#                 datos_retornar = {"mensaje": "Ya existe plato con ese nombre"}
-#                 return HttpResponse(json.dumps(datos_retornar, ensure_ascii=False).encode("utf-8"),
-#                                     content_type='application/json')
-#         except Exception as e:
-#             print(e)
-#         plato = Plato()
-#         plato.title = datos.get("title")
-#         plato.price = datos.get("price")
-#         plato.description = datos.get("description")
-#         plato.save()
-#         platos = {"mensaje": "Registro exitoso"}
-#     return HttpResponse(json.dumps(platos, ensure_ascii=False).encode("utf-8"), content_type='application/json')
-
 """
+
+@csrf_exempt
+def noticias(request):
+    if request.method == "GET":
+        datos = Notice.objects.all()
+        lista_persona = []
+        for i in datos:
+            notice = {}
+            notice["title"] = i.title
+            notice["description"] = i.description
+            lista_persona.append(notice)
+        noticias = lista_persona
+    elif request.method == "POST":
+        datos = json.loads(request.body.decode('utf8'))
+        notice = Notice()
+        notice.title = datos.get("title")
+        notice.description = datos.get("description")
+        notice.save()
+        noticias = {"mensaje": "Registro exitoso"}
+    return HttpResponse(json.dumps(noticias, ensure_ascii=False).encode("utf-8"), content_type='application/json')
+
+
+@csrf_exempt
+def platos(request):
+    if request.method == "GET":
+        datos = Plato.objects.all()
+        lista_platos = []
+        for i in datos:
+            plato = {}
+            plato["title"] = i.title
+            plato["price"] = float(i.price)
+            plato["description"] = i.description
+            lista_platos.append(plato)
+        platos = lista_platos
+    elif request.method == "POST":
+        datos = json.loads(request.body.decode('utf8'))
+        try:
+            verificacion_plato = Plato.objects.filter(title=datos.get("title"))
+            if len(verificacion_plato) != 0:
+                datos_retornar = {"mensaje": "Ya existe plato con ese nombre"}
+                return HttpResponse(json.dumps(datos_retornar, ensure_ascii=False).encode("utf-8"),
+                                    content_type='application/json')
+        except Exception as e:
+            print(e)
+        plato = Plato()
+        plato.title = datos.get("title")
+        plato.price = datos.get("price")
+        plato.description = datos.get("description")
+        plato.save()
+        platos = {"mensaje": "Registro exitoso"}
+    return HttpResponse(json.dumps(platos, ensure_ascii=False).encode("utf-8"), content_type='application/json')
+
 class NoticeListView(ListView):
     model = Notice
     template_name = 'notices-list.html'
@@ -181,3 +185,4 @@ class PlatosDeleteView(DeleteView):
         context['title'] = 'Eliminación de un Plato'
         context['list_url'] = reverse_lazy('plato')
         return context
+

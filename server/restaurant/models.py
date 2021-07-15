@@ -26,3 +26,4 @@ class Notice(models.Model):
 
     def save(self, *args, **kwargs):
         super(Notice, self).save(*args, **kwargs)
+
