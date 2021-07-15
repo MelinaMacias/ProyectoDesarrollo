@@ -1,8 +1,22 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView,DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
 from .forms import NoticeForm, PlatoForm
 from .models import *
+
+
+class Index(TemplateView):
+    template_name = 'index-home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['noticias'] =Notice.objects.count()
+        context['platos'] = Plato.objects.count()
+        context['create_url'] = reverse_lazy('notice-create')
+        return context
+
+
 
 """
 # class DecimalEncoder(json.JSONEncoder):
@@ -78,7 +92,6 @@ class NoticeListView(ListView):
         context['create_url'] = reverse_lazy('notice-create')
         num_visits = self.request.session.get('num_visits', 1)
         self.request.session['num_visits'] = num_visits + 1
-        print(num_visits)
         return context
 
 
@@ -155,4 +168,16 @@ class PlatoEditView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editando Plato'
         context['icono'] = 'fas fa-edit'
+        return context
+
+
+class PlatosDeleteView(DeleteView):
+    model = Plato
+    template_name = 'delete.html'
+    success_url = reverse_lazy('plato')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Eliminación de un Plato'
+        context['list_url'] = reverse_lazy('plato')
         return context
