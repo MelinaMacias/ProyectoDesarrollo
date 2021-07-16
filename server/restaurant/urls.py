@@ -18,6 +18,7 @@ urlpatterns = [
     path('platos/delete/<int:pk>', PlatosDeleteView.as_view(), name='plato-delete'),
 
     path('mensajes',ContactListView.as_view(),name='contact'),
+    path('api/mensajes', contactos, name='contact_post'),
     path('mensajes/detail/<int:pk>',ContactDetailView.as_view(),name='contact-detail'),
 
     # API

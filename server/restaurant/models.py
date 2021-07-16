@@ -36,7 +36,7 @@ class Contacto(models.Model):
     message = models.TextField(max_length=1000)
     cel = models.CharField(max_length=10)
     email = models.EmailField()
-    date = models.DateTimeField(auto_now_add=True, null=True)
+    date = models.DateTimeField(null=True)
 
     class Meta:
         verbose_name = "Contacto"

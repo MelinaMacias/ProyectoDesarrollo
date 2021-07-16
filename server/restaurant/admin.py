@@ -14,7 +14,7 @@ class NoticeAdmin(admin.ModelAdmin):
     readonly_fields = ('id',)
 
 class ContactoAdmin(admin.ModelAdmin):
-    list_display = ('name', 'message','cel')
+    list_display = ('name', 'message','cel', 'date')
 
 
 admin.site.register(Plato, PlatoAdmin)
