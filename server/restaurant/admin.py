@@ -11,6 +11,10 @@ class PlatoAdmin(admin.ModelAdmin):
 class NoticeAdmin(admin.ModelAdmin):
     list_display = ('title', 'description',)
 
+class ContactoAdmin(admin.ModelAdmin):
+    list_display = ('name', 'message','cel')
+
 
 admin.site.register(Plato, PlatoAdmin)
 admin.site.register(Notice, NoticeAdmin)
+admin.site.register(Contacto, ContactoAdmin)

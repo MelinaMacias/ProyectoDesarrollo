@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-6*22thv9i@!k&$!_f1w&afk@3-b1be)qd5mvdlv2_&gz2310o6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'restaurante-donboloensusalsa.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'restaurante-donboloensusalsa.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'djangoProject3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
     }
 }
 
@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ec'
 
 TIME_ZONE = 'UTC'
 
@@ -121,5 +121,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static"),
+    os.path.join(BASE_DIR, "static"),
 ]
