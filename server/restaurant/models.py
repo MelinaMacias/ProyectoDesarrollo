@@ -6,6 +6,7 @@ class Plato(models.Model):
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField()
+    urlimage = models.CharField(max_length=1000)
 
     class Meta:
         verbose_name = "Plato"
@@ -18,6 +19,7 @@ class Plato(models.Model):
 class Notice(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField(max_length=2000)
+    urlimage = models.CharField(max_length=1000)
 
     # image = models.ImageField()
 

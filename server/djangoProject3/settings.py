@@ -24,7 +24,12 @@ SECRET_KEY = 'django-insecure-6*22thv9i@!k&$!_f1w&afk@3-b1be)qd5mvdlv2_&gz2310o6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'restaurante-donboloensusalsa.herokuapp.com', '127.0.0.1']
+# ALLOWED_HOSTS = ['localhost', 'restaurante-donboloensusalsa.herokuapp.com', '127.0.0.1']
+
+ALLOWED_HOSTS=['*']
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Application definition
 
@@ -36,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant.apps.RestaurantConfig',
-    'widget_tweaks'
+    'widget_tweaks',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -47,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject3.urls'

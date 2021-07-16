@@ -5,11 +5,13 @@ from restaurant.models import *
 
 
 class PlatoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price','description',)
+    list_display = ('title', 'price','description', "urlimage")
+    readonly_fields = ('id',)
 
 
 class NoticeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description',)
+    list_display = ('id', 'title', 'description', "urlimage")
+    readonly_fields = ('id',)
 
 class ContactoAdmin(admin.ModelAdmin):
     list_display = ('name', 'message','cel')

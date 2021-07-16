@@ -1,3 +1,4 @@
+
 import calendar
 import datetime
 import json
@@ -54,7 +55,7 @@ def noticias(request):
         datos = Notice.objects.all()
         lista_persona = []
         for i in datos:
-            notice = {'title': i.title, 'description': i.description}
+            notice = {'id': i.id, 'title': i.title, 'description': i.description, "urlimage": i.urlimage}
             lista_persona.append(notice)
         noticias = lista_persona
     elif request.method == "POST":
@@ -74,7 +75,12 @@ def platos(request):
         datos = Plato.objects.all()
         lista_platos = []
         for i in datos:
-            plato = {"title": i.title, "price": float(i.price), "description": i.description}
+            plato = {
+                "title": i.title, 
+                "price": float(i.price), 
+                "description": i.description,
+                "urlimage": i.urlimage
+            }
             lista_platos.append(plato)
         platos = lista_platos
     elif request.method == "POST":
