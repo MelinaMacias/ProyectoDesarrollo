@@ -24,7 +24,6 @@ def data():
         dia = today + datetime.timedelta(days=-i)
         qs = Contacto.objects.filter(date__date=dia).count()
         ld.append(qs)
-    ld.append(Contacto.objects.filter(date__date=today).count())
     for i in range(len(despues) + 1):
         dia = today + datetime.timedelta(days=i)
         qs = Contacto.objects.filter(date__date=dia).count()
@@ -148,8 +147,8 @@ class NoticeCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Creando Noticia'
+        context['color'] = 'primary'
         context['icono'] = 'fas fa-newspaper'
-
         return context
 
 
@@ -169,6 +168,7 @@ class NoticeEditView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editando Noticia'
         context['icono'] = 'fas fa-edit'
+        context['color'] = 'primary'
         return context
 
 
@@ -187,6 +187,7 @@ class NoticeDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Eliminación de una Noticia'
         context['list_url'] = reverse_lazy('notice')
+        context['color'] = 'primary'
         return context
 
 
@@ -226,7 +227,7 @@ class PlatoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Creando Plato'
         context['icono'] = 'fas fa-utensil-spoon'
-
+        context['color'] = 'success'
         return context
 
 
@@ -246,6 +247,7 @@ class PlatoEditView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editando Plato'
         context['icono'] = 'fas fa-edit'
+        context['color'] = 'success'
         return context
 
 

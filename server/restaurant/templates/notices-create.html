@@ -3,7 +3,7 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <div class="card card-primary">
+        <div class="card card-{{ color }}">
             <div class="card-header">
                 <h3 class="card-title">
                     <i class="{{ icono }}"></i>
