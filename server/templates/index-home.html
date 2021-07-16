@@ -2,12 +2,17 @@
 
 {% block head %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+    <style>
+        .informacion:hover{
+            transform: scale(1.05);
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
     <div class="row">
         {% for valor in valores %}
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-4 col-6 informacion">
                 <!-- small box -->
                 <div class="small-box bg-{{ valor.3 }}">
                     <div class="inner">
@@ -36,7 +41,7 @@
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <div class="tab-content p-0">
-                        <canvas id="myChart" width="400" height="400"></canvas>
+                        <canvas id="myChart" width="300" height="150"></canvas>
                     </div>
                 </div><!-- /.card-body -->
             </div>
@@ -181,11 +186,6 @@
             <!-- /.card -->
         </section>
     </div>
-    <div class="card">
-
-    </div>
-
-
 {% endblock %}
 
 
