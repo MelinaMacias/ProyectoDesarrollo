@@ -14,6 +14,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { Page404Component } from '../components/page404/page404.component';
 import { DesarrolladoresComponent } from '../components/desarrolladores/desarrolladores.component';
 
+import {HttpClientModule} from '@angular/common/http';
+import { LocationComponent } from '../components/location/location.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,11 +28,14 @@ import { DesarrolladoresComponent } from '../components/desarrolladores/desarrol
     ContactoComponent,
     NavbarComponent,
     Page404Component,
-    DesarrolladoresComponent
+    DesarrolladoresComponent,
+    LocationComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '' }],
   bootstrap: [AppComponent]

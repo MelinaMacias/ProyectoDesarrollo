@@ -1,0 +1,12 @@
+
+#offers {
+
+  padding-top: 4%;
+
+}
+
+.plate:hover {
+
+  transform: scale(1.02, 1.02);
+
+}

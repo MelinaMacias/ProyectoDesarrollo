@@ -1,24 +1,9 @@
-/*
-#titulo {
-   font-size: 30px;
-   font-weight: 900;
-}
 
-#contenedor {
-   display: grid;
-   grid-template-columns: 25% 50%;
-}
+.news-section {
 
+  margin-top: 52px;
+  margin-bottom: 52px;
 
-#contenedor #descripcion{
-   font-size: 14px;
-   line-height: 25px;
-   color: #2a2a2a;
-}
-*/
-
-img{
-   
 }
 
 @media(min-width: 992px){
@@ -53,3 +38,4 @@ img{
       margin-bottom: 5%;
    }
 }
+

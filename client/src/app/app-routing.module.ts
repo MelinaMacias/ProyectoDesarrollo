@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactoComponent } from 'src/components/contacto/contacto.component';
 import { DesarrolladoresComponent } from 'src/components/desarrolladores/desarrolladores.component';
 import { HomeComponent } from 'src/components/home/home.component';
+import { MenuComponent } from 'src/components/menu/menu.component';
+import { NoticiaComponent } from 'src/components/noticia/noticia.component';
 import { Page404Component } from 'src/components/page404/page404.component';
 
 const routes: Routes = [
@@ -14,6 +16,14 @@ const routes: Routes = [
   {
     path: "inicio",
     component: HomeComponent
+  },
+  {
+    path: "menu",
+    component: MenuComponent
+  },
+  {
+    path: "noticias",
+    component: NoticiaComponent
   },
   {
     path: "desarrolladores",

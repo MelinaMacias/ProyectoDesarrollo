@@ -1,5 +1,9 @@
-export interface Menu{
-    titulo:string;
-    precio:number;
-    descripcion:string;
+
+export interface Menu {
+
+  title: string;
+  price: number;
+  description: string;
+  urlimage: string;
+
 }

@@ -1,7 +1,19 @@
 <app-header></app-header>
 <div class="row no-gutters">
   <div class="col-12" style="padding: 12px">
-    <p>Contenido</p>
+    <app-menu
+      title = "Menus de la semana"
+      [footer] = "false"
+      subtitle = "Tenemos preparadas varias ofertas"></app-menu>
+  </div>
+  <div class="col-12" style="padding: 12px">
+    <app-location></app-location>
+  </div>
+  <div class="col-12" style="padding: 12px">
+    <app-noticia
+      title="Ultimas noticias"
+      [footer] = "false"
+      subtitle="Enterese de las ultimas promociones"></app-noticia>
   </div>
 </div>
 <app-footer></app-footer>
