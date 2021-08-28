@@ -5,12 +5,12 @@ from restaurant.models import *
 
 
 class PlatoAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'price','description',)
 
 
 class NoticeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'description',)
 
 
 admin.site.register(Plato, PlatoAdmin)
-admin.site.register(Noticia, NoticeAdmin)
+admin.site.register(Notice, NoticeAdmin)

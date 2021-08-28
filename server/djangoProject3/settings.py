@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-6*22thv9i@!k&$!_f1w&afk@3-b1be)qd5mvdlv2_&gz2310o6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'restaurante-donboloensusalsa.herokuapp.com']
 
 # Application definition
 
@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'restaurant.apps.RestaurantConfig'
+    'restaurant.apps.RestaurantConfig',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static"),
+]

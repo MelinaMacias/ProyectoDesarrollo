@@ -1,0 +1,29 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 20%;">Titulo</th>
+        <th scope="col" style="width: 50%;">Descripción</th>
+        <th scope="col" style="width: 20%;">Opciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for object in object_list %}
+        <tr>
+            <td>{{ object.title| truncatechars:30  }}</td>
+            <td>{{ object.description| truncatechars:60 }}</td>
+            <td>
+                <a href="{% url 'notice-update' object.id %}" class="btn btn-warning btn-xs btn-flat">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <a href="{% url 'notice-delete' object.id %}" class="btn btn-danger btn-xs btn-flat">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    
+{% endblock %}
+

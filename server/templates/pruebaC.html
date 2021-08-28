@@ -1,0 +1,28 @@
+{% extends 'body.html' %}
+
+{% block content %}
+    <form method="post" action=".">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-search"></i>
+                    {{ title }}
+                </h3>
+            </div>
+            <div class="card-body">
+                {% for foo in form %}
+                    <div class="form-group">
+                        <label>{{ foo.label }}</label>
+                        {{ foo }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+
+{% endblock %}
