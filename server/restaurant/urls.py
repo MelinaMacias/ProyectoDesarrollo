@@ -17,6 +17,10 @@ urlpatterns = [
     path('platos/<int:pk>',PlatoEditView.as_view(),name='plato-edit'),
     path('platos/delete/<int:pk>', PlatosDeleteView.as_view(), name='plato-delete'),
 
+    path('mensajes',ContactListView.as_view(),name='contact'),
+    path('api/mensajes', contactos, name='contact_post'),
+    path('mensajes/detail/<int:pk>',ContactDetailView.as_view(),name='contact-detail'),
+
     # API
     path("api/noticias", noticias, name = 'api_noticias'),
     path("api/platos", platos, name = 'api_platos'),

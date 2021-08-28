@@ -12,7 +12,7 @@
 
 
 {% block content %}
-    <div class="card card-primary">
+    <div class="card card-{{ color }}">
         <div class="card-header">
             <h3 class="card-title">
                 <i class="fas fa-search"></i>
@@ -33,10 +33,14 @@
                 </tbody>
             </table>
         </div>
+
         <div class="card-footer">
-            <a href="{{ create_url }}" class="btn btn-primary btn-flat btnTest">
-                <i class="fas fa-plus"></i> Nuevo registro
-            </a>
+            {% if new %}
+                <a href="{{ create_url }}" class="btn btn-{{ color }} btn-flat btnTest">
+                    <i class="fas fa-plus"></i> Nuevo registro
+                </a>
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}

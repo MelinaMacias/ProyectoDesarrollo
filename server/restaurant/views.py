@@ -1,13 +1,35 @@
 
+import calendar
+import datetime
 import json
+
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView, DetailView
 
 from .forms import NoticeForm, PlatoForm
 from .models import *
+
+
+def data():
+    days = list(calendar.day_name)
+    ld = []
+    today = datetime.date.today()
+    indiceh = days.index(today.strftime("%A"))
+    antes = days[:indiceh]
+    despues = days[indiceh + 1:]
+    for i in range(len(antes), 0, -1):
+        dia = today + datetime.timedelta(days=-i)
+        qs = Contacto.objects.filter(date__date=dia).count()
+        ld.append(qs)
+    for i in range(len(despues) + 1):
+        dia = today + datetime.timedelta(days=i)
+        qs = Contacto.objects.filter(date__date=dia).count()
+        ld.append(qs)
+    return ld
 
 
 class Index(TemplateView):
@@ -15,34 +37,24 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['noticias'] =Notice.objects.count()
-        context['platos'] = Plato.objects.count()
+        a = [Notice.objects.count(), 'Noticias', reverse_lazy('notice'), 'info']
+        b = [Plato.objects.count(), 'Platos', reverse_lazy('plato'), 'success']
+        c = [Contacto.objects.count(), 'Mensajes', reverse_lazy('contact'), 'warning']
+        l = [a, b, c]
+        context['valores'] = l
+        context['fecha'] = data()
         context['create_url'] = reverse_lazy('notice-create')
         return context
 
 
-"""
-# class DecimalEncoder(json.JSONEncoder):
-#     def default(self, o):
-#         if isinstance(o, decimal.Decimal):
-#             # wanted a simple yield str(o) in the next line,
-#             # but that would mean a yield on the line with super(...),
-#             # which wouldn't work (see my comment below), so...
-#             return (str(o) for o in [o])
-#         return super(DecimalEncoder, self).default(o)
-# 
-# 
-"""
-
 @csrf_exempt
 def noticias(request):
+    noticias = ""
     if request.method == "GET":
         datos = Notice.objects.all()
         lista_persona = []
         for i in datos:
-            notice = {}
-            notice["title"] = i.title
-            notice["description"] = i.description
+            notice = {'id': i.id, 'title': i.title, 'description': i.description, "urlimage": i.urlimage}
             lista_persona.append(notice)
         noticias = lista_persona
     elif request.method == "POST":
@@ -57,14 +69,17 @@ def noticias(request):
 
 @csrf_exempt
 def platos(request):
+    platos = ''
     if request.method == "GET":
         datos = Plato.objects.all()
         lista_platos = []
         for i in datos:
-            plato = {}
-            plato["title"] = i.title
-            plato["price"] = float(i.price)
-            plato["description"] = i.description
+            plato = {
+                "title": i.title, 
+                "price": float(i.price), 
+                "description": i.description,
+                "urlimage": i.urlimage
+            }
             lista_platos.append(plato)
         platos = lista_platos
     elif request.method == "POST":
@@ -85,15 +100,39 @@ def platos(request):
         platos = {"mensaje": "Registro exitoso"}
     return HttpResponse(json.dumps(platos, ensure_ascii=False).encode("utf-8"), content_type='application/json')
 
+
+@csrf_exempt
+def contactos(request):
+    respuesta = ''
+    if request.method == "POST":
+        datos = json.loads(request.body.decode('utf8'))
+        contacto = Contacto()
+        contacto.name = datos.get("name")
+        contacto.message = datos.get("message")
+        contacto.celular = datos.get("celular")
+        contacto.email = datos.get("email")
+        contacto.save()
+        respuesta = {"mensaje": "Registro exitoso"}
+    return HttpResponse(json.dumps(respuesta, ensure_ascii=False).encode("utf-8"), content_type='application/json')
+
+
 class NoticeListView(ListView):
     model = Notice
     template_name = 'notices-list.html'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listado de Noticias'
         context['icono'] = 'fas fa-search'
         context['create_url'] = reverse_lazy('notice-create')
+        context['color'] = 'primary'
+        context['new'] = True
         num_visits = self.request.session.get('num_visits', 1)
         self.request.session['num_visits'] = num_visits + 1
         return context
@@ -105,11 +144,17 @@ class NoticeCreateView(CreateView):
     form_class = NoticeForm
     success_url = reverse_lazy('notice')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Creando Noticia'
+        context['color'] = 'primary'
         context['icono'] = 'fas fa-newspaper'
-
         return context
 
 
@@ -119,21 +164,36 @@ class NoticeEditView(UpdateView):
     template_name = 'notices-create.html'
     success_url = reverse_lazy('notice')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editando Noticia'
         context['icono'] = 'fas fa-edit'
+        context['color'] = 'primary'
         return context
+
 
 class NoticeDeleteView(DeleteView):
     model = Notice
     template_name = 'delete.html'
     success_url = reverse_lazy('notice')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Eliminación de una Noticia'
         context['list_url'] = reverse_lazy('notice')
+        context['color'] = 'primary'
         return context
 
 
@@ -141,11 +201,19 @@ class PlatoListView(ListView):
     model = Plato
     template_name = 'platos-list.html'
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listado de platos'
         context['icono'] = 'fas fa-search'
         context['create_url'] = reverse_lazy('plato-create')
+        context['new'] = True
+        context['color'] = 'success'
         return context
 
 
@@ -155,10 +223,17 @@ class PlatoCreateView(CreateView):
     form_class = PlatoForm
     success_url = reverse_lazy('plato')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Creando Plato'
         context['icono'] = 'fas fa-utensil-spoon'
+        context['color'] = 'success'
         return context
 
 
@@ -168,10 +243,17 @@ class PlatoEditView(UpdateView):
     template_name = 'notices-create.html'
     success_url = reverse_lazy('plato')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Editando Plato'
         context['icono'] = 'fas fa-edit'
+        context['color'] = 'success'
         return context
 
 
@@ -180,9 +262,46 @@ class PlatosDeleteView(DeleteView):
     template_name = 'delete.html'
     success_url = reverse_lazy('plato')
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Eliminación de un Plato'
         context['list_url'] = reverse_lazy('plato')
         return context
 
+
+class ContactListView(ListView):
+    model = Contacto
+    template_name = 'contact-list.html'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('/admin/')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Listado de mensajes'
+        context['icono'] = 'fas fa-search'
+        context['color'] = 'cyan'
+        context['new'] = False
+        return context
+
+
+class ContactDetailView(DetailView):
+    model = Contacto
+    template_name = 'detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Detalle de mensaje'
+        context['icono'] = 'fas fa-address-card'
+        context['color'] = 'cyan'
+        context['new'] = False
+        return context
