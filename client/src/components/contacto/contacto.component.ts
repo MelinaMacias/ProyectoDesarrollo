@@ -32,7 +32,6 @@ export class ContactoComponent implements OnInit {
 
     }).subscribe( response => {
 
-
       form.title.value = "";
       form.name.value = "";
       form.email.value = "";
