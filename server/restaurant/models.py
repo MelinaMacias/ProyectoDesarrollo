@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class Plato(models.Model):
     title = models.CharField(max_length=100)
@@ -44,3 +43,4 @@ class Contacto(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.cel}'
+
