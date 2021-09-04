@@ -1,7 +1,7 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
 
-#auth{background:#6c757d;min-height:100vh;padding-top:100px;background-image:url(/assets/images/backgrounds/auth.jpg)}
+#auth{background:#6c757d;min-height:100vh;padding-top:100px;background-image:url(/assets/images/reservation-bg.jpg)}
 
 #username, #password {
     padding-left: 7%;

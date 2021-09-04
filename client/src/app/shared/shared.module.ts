@@ -5,12 +5,18 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { HasRolesDirective } from './directives/authorization/hasRoles/has-roles.directive';
+import { IsAuthenticatedDirective } from './directives/authorization/isAuthenticated/is-authenticated.directive';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    IsAuthenticatedDirective,
+    HasRolesDirective,
+
   ],
   imports: [
     CommonModule,
@@ -19,7 +25,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     FooterComponent,
-    NavbarComponent
+    IsAuthenticatedDirective,
+    NavbarComponent,
+    HasRolesDirective
   ]
 })
 export class SharedModule { }

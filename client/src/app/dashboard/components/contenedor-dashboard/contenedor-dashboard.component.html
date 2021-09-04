@@ -1,3 +1,4 @@
+
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -159,41 +160,51 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a routerLink="/dashboard/" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Administración general
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="menus" class="nav-link" routerLinkActive="active">
-              <i class="fas fa-hamburger"></i>
-              <p> Platos</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="noticias" class="nav-link" routerLinkActive="active">
-              <i class="far fa-newspaper"></i>
-              <p> Noticias</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="mensajes-contacto" class="nav-link" routerLinkActive="active">
-              <i class="fas fa-envelope-open-text"></i>
-              <p>
-                Mensajes de contacto
-              </p>
-            </a>
-          </li>
-          <li class="nav-header">Zona de usuarios</li>
+          <div hasRoles [roles]="['superuser']">
+            <li class="nav-item">
+              <a routerLink="/dashboard/" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Administración general
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="menus" class="nav-link" routerLinkActive="active">
+                <i class="fas fa-hamburger"></i>
+                <p> Platos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="noticias" class="nav-link" routerLinkActive="active">
+                <i class="far fa-newspaper"></i>
+                <p> Noticias</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="mensajes-contacto" class="nav-link" routerLinkActive="active">
+                <i class="fas fa-envelope-open-text"></i>
+                <p>
+                  Mensajes de contacto
+                </p>
+              </a>
+            </li>
+          </div>
+          <li class="nav-header" hasRoles [roles]="['superuser']">Zona de usuarios</li>
           <li class="nav-item">
             <a routerLink="reservaciones" class="nav-link" routerLinkActive="active">
               <i class="fas fa-glass-cheers"></i>
               <p>
                 Reservaciones
-                <span class="badge badge-info right">2</span>
+                <span hasRoles [roles]="['superuser']" class="badge badge-info right">2</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="comentarios" class="nav-link" routerLinkActive="active">
+              <i class="far fa-comments"></i>
+              <p>
+                Comentarios
               </p>
             </a>
           </li>
