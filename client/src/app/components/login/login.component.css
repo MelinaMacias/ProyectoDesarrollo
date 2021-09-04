@@ -1,0 +1,14 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
+
+#auth{background:#6c757d;min-height:100vh;padding-top:100px;background-image:url(/assets/images/backgrounds/auth.jpg)}
+
+#username, #password {
+    padding-left: 7%;
+}
+
+.input-icon {
+    position: absolute;
+    top: 12px;
+    left: 9px;
+}

@@ -160,7 +160,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a routerLink="dashboard" class="nav-link">
+            <a routerLink="/dashboard/" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Administración general
@@ -201,6 +201,12 @@
             <a routerLink="perfil" class="nav-link" routerLinkActive="active">
               <i class="far fa-user"></i>
               <p> Perfil</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i>
+              <p> Cerrar sesión</p>
             </a>
           </li>
         </ul>

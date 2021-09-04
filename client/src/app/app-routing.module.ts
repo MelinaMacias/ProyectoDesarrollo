@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Page404Component } from 'src/components/page404/page404.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthenticationGuard } from './core/guards/authentication/authentication.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +14,12 @@ const routes: Routes = [
   {
     path: "dashboard",
     loadChildren: () => import("./dashboard/dashboard.module")
-      .then( m => m.DashboardModule)
+      .then( m => m.DashboardModule),
+    canActivate: [ AuthenticationGuard ]
+  },
+  {
+    path: "login",
+    component: LoginComponent
   },
   {
     path: "**",
