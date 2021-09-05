@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { HasRolesDirective } from './directives/authorization/hasRoles/has-roles.directive';
 import { IsAuthenticatedDirective } from './directives/authorization/isAuthenticated/is-authenticated.directive';
+import { NotificacionesService } from './services/notificaciones/notificaciones.service';
 
 
 @NgModule({
@@ -28,6 +29,9 @@ import { IsAuthenticatedDirective } from './directives/authorization/isAuthentic
     IsAuthenticatedDirective,
     NavbarComponent,
     HasRolesDirective
+  ],
+  providers: [
+    NotificacionesService
   ]
 })
 export class SharedModule { }

@@ -54,11 +54,7 @@ class NoticeSerializer(serializers.ModelSerializer):
 
         return notice
 
-    
-    
-class PlatoSerializer(serializers.ModelSerializer):
-
-    idUsuario = UserSerializar(read_only = True)
+class PlatoCreateSerializer(serializers.ModelSerializer):
 
     def get_serializer_context(self):
         """Extra context provided to the serializer class."""
@@ -71,20 +67,35 @@ class PlatoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Plato
-        fields = '__all__'
+        fields = [
+            'title',
+            'description',
+            'price',
+            'urlimage'
+        ]
         
-    def create(self,data):
+    def create(self, data):
 
-        nuevoPlato= Plato.objects.create(
+        nuevoPlato = Plato.objects.create(
             title = data.get("title"),
             price = data.get("price"),
             description = data.get("description"),
             urlimage = data.get("urlimage"),
-            likes = data.get("likes"),
+            likes = 0,
             idUsuario = self.context['request'].user
         )
 
         return nuevoPlato
+
+    
+class PlatoSerializer(serializers.ModelSerializer):
+
+    idUsuario = UserSerializar(read_only = True)
+    
+    class Meta:
+        model = Plato
+        fields = '__all__'
+
 
     def update(self, plato, data):
 

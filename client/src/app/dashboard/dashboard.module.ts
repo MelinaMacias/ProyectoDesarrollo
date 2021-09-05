@@ -13,6 +13,9 @@ import { ReservacionesComponent } from './components/reservaciones/reservaciones
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ComentariosComponent } from './components/comentarios/comentarios/comentarios.component';
+import { UpdateMenuComponent } from './components/update-menu/update-menu/update-menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateMenuComponent } from './components/create-menu/create-menu/create-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,17 @@ import { ComentariosComponent } from './components/comentarios/comentarios/comen
     MensajesContactoComponent,
     ReservacionesComponent,
     PerfilComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    UpdateMenuComponent,
+    CreateMenuComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

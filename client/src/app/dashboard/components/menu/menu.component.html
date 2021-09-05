@@ -1,1 +1,35 @@
-<p>menus works!</p>
+
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Platos</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <button class="btn btn-primary mb-4" routerLink="./crear">Agregar nuevo plato</button>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="width: 10px">#</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th style="width: 40px">Acciones</th>
+          </tr>
+        </thead>
+        <tbody  *ngFor = "let plato of platos">
+          <tr id="plato-{{plato.id}}">
+            <td>{{plato?.id}}</td>
+            <td>{{plato?.title}}</td>
+            <td>{{plato?.description}}</td>
+            <td>${{plato?.price}}</td>
+            <td>
+                <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm" routerLink="./{{plato.id}}"><i class="fas fa-edit"></i></button>
+                <button style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(plato)"><i class="fas fa-trash-alt"></i></button>
+            </td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
