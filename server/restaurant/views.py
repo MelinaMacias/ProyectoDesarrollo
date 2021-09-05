@@ -35,15 +35,15 @@ def contactos(request):
 
 class NoticiasView(ModelViewSet):
     
-    serializer_class = NoticeSerializer
+    serializer_class = NoticiaCreateSerializer
     queryset = Notice.objects.all()
 
     def list(self, request):
 
-        datos = self.get_serializer(self.get_queryset(), many = True)
+        datos = NoticeSerializer(self.get_queryset(), many = True)
         
         return Response(datos.data)
-        
+
 
     def retrieve(self, request, pk):
 

@@ -16,6 +16,8 @@ import { ComentariosComponent } from './components/comentarios/comentarios/comen
 import { UpdateMenuComponent } from './components/update-menu/update-menu/update-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateMenuComponent } from './components/create-menu/create-menu/create-menu.component';
+import { CreateNoticiaComponent } from './components/create-noticia/create-noticia/create-noticia.component';
+import { UpdateNoticiaComponent } from './components/update-noticia/update-noticia/update-noticia.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CreateMenuComponent } from './components/create-menu/create-menu/create
     PerfilComponent,
     ComentariosComponent,
     UpdateMenuComponent,
-    CreateMenuComponent
+    CreateMenuComponent,
+    CreateNoticiaComponent,
+    UpdateNoticiaComponent
   ],
   imports: [
     CommonModule,
