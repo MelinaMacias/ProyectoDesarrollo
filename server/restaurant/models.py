@@ -38,11 +38,13 @@ class Notice(models.Model):
 
 
 class Contacto(models.Model):
+
     name = models.CharField(max_length=100)
     message = models.TextField(max_length=1000)
     cel = models.CharField(max_length=10)
+    asunto = models.CharField(max_length=100)
     email = models.EmailField()
-    date = models.DateTimeField(null=True)
+    date = models.DateTimeField(auto_now_add = True)
 
     class Meta:
         verbose_name = "Contacto"

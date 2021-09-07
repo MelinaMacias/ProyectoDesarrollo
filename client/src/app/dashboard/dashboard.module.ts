@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateMenuComponent } from './components/create-menu/create-menu/create-menu.component';
 import { CreateNoticiaComponent } from './components/create-noticia/create-noticia/create-noticia.component';
 import { UpdateNoticiaComponent } from './components/update-noticia/update-noticia/update-noticia.component';
+import { NoticiasBarComponent } from './components/graficos/noticias/noticias-bar/noticias-bar.component';
+import { MensajeRespuestaComponent } from './components/mensaje-respuesta/mensaje-respuesta.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { UpdateNoticiaComponent } from './components/update-noticia/update-notic
     UpdateMenuComponent,
     CreateMenuComponent,
     CreateNoticiaComponent,
-    UpdateNoticiaComponent
+    UpdateNoticiaComponent,
+    NoticiasBarComponent,
+    MensajeRespuestaComponent
   ],
   imports: [
     CommonModule,

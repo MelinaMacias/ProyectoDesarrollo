@@ -1,4 +1,5 @@
 
+import datetime
 from django.contrib.auth.models import User
 from django.db.models import fields
 from rest_framework import serializers
@@ -134,3 +135,18 @@ class ComentarioSerializer(serializers.ModelSerializer):
         model = Comentario
         fields = '__all__'
     
+
+class ContactoSerializer(serializers.Serializer):
+
+    nombre = serializers.CharField(max_length=30)
+    mensaje = serializers.CharField()
+    celular = serializers.CharField()
+    asunto = serializers.CharField()
+    email = serializers.EmailField()
+    contestado = serializers.BooleanField()
+    fecha_creacion = serializers.DateField()
+
+    class Meta:
+        fields = "__all__"
+        read_only_fields = ["fecha_creacion", "contestado"]
+

@@ -1,33 +1,38 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Noticias</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <button class="btn btn-primary mb-4" routerLink="./crear">Agregar nueva noticia</button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th style="width: 40px">Acciones</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let noticia of noticias">
 
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title">Noticias</h3>
-  </div>
-  <!-- /.card-header -->
-  <div class="card-body">
-    <button class="btn btn-primary mb-4" routerLink="./crear">Agregar nueva noticia</button>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th style="width: 10px">#</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th style="width: 40px">Acciones</th>
-        </tr>
-      </thead>
-      <tbody  *ngFor = "let noticia of noticias">
-        <tr id="noticia-{{noticia.id}}">
-          <td>{{noticia?.id}}</td>
-          <td>{{noticia?.title}}</td>
-          <td>{{noticia?.description}}</td>
-          <td>
-              <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm" routerLink="./{{noticia.id}}"><i class="fas fa-edit"></i></button>
-              <button style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(noticia)"><i class="fas fa-trash-alt"></i></button>
-          </td>
-          
-        </tr>
-        
-      </tbody>
-    </table>
+            <tr id="noticia-{{noticia.id}}">
+              <td>{{noticia?.id}}</td>
+              <td>{{noticia?.title}}</td>
+              <td>{{noticia?.description}}</td>
+              <td>
+                <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm"
+                  routerLink="./{{noticia.id}}"><i class="fas fa-edit"></i></button>
+                <button style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(noticia)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

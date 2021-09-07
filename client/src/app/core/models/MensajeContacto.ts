@@ -1,9 +1,11 @@
 
 export interface MensajeContacto {
-
-  name: string,
-  message: string,
+  id: string,
+  asunto: string,
+  nombre: string,
+  mensaje: string,
   celular: string,
-  email: string
-
+  email: string,
+  fecha_creacion: string,
+  contestado: boolean,
 }

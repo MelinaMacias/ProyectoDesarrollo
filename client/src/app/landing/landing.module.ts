@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,13 +23,16 @@ import { LayoutComponent } from './components/layout/layout.component';
     MenuComponent,
     LocationComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+
   ],
   imports: [
     CommonModule,
     CoreModule,
     SharedModule,
-    LandingRoutingModule
+    LandingRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class LandingModule { }

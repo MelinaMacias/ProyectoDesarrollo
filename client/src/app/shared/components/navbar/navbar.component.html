@@ -23,14 +23,10 @@
         <a class="nav-link" routerLink="/desarrolladores">Equipo de desarrollo</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+        <a class="nav-link" *ngIf="!is_auth" routerLink="/login">Iniciar sesión</a>
+        <a class="nav-link" hasRoles [roles]="['superuser']" routerLink="/dashboard">Dashboard</a>
+        <a class="nav-link" hasRoles [roles]="['simpleuser']" routerLink="/dashboard/reservaciones">Dashboard</a>
       </li>
-      <li class="nav-item" isAuthenticated>
-        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-      </li>
-      <!-- <li class="nav-item" routerLinkActive = "active">
-        <a class="nav-link" [routerLink]=[loginUrl]>Iniciar Sesión</a>
-      </li> -->
     </ul>
   </div>
 </nav>

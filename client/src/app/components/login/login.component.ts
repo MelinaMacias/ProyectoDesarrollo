@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       let authResult = this.authService.login({
         "username": this.usernameField.value,
         "password": this.passwordField.value
-      }, this.nextPath || '/');
+      }, this.nextPath || '/dashboard');
 
       authResult.catch(err => this.loginError = true);
 

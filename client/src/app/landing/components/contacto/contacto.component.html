@@ -1,5 +1,5 @@
 
-<section class="section" id="reservation">
+<section class="section pb-4" id="reservation">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 align-self-center">
@@ -36,28 +36,28 @@
               </div>
               <div class="col-lg-12 col-sm-12">
                 <fieldset>
-                  <input name="title" type="text" id="title" placeholder="Asunto*" required="">
+                  <input name="title" type="text" id="title" placeholder="Asunto*" required="" [formControl]="asuntoField">
                 </fieldset>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <fieldset>
-                  <input name="name" type="text" id="name" placeholder="Su nombre*" required="">
+                  <input name="name" type="text" id="name" placeholder="Su nombre*" required="" [formControl]="nameField">
                 </fieldset>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <fieldset>
                   <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Su correo electronico*"
-                    required="">
+                    required="" [formControl]="emailField">
                 </fieldset>
               </div>
               <div class="col-lg-6 col-sm-12">
                 <fieldset>
-                  <input name="number" type="text" id="number" placeholder="Su número telefónico*" required="">
+                  <input name="number" type="text" id="number" placeholder="Su número telefónico*" required="" [formControl]="celularField">
                 </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
-                  <textarea name="message" rows="20" id="message" placeholder="Mensaje" required=""></textarea>
+                  <textarea name="message" rows="20" id="message" placeholder="Mensaje" required="" [formControl]="messageField"></textarea>
                 </fieldset>
               </div>
               <div class="col-lg-12">

@@ -1,1 +1,36 @@
-<p>mensajes-contacto works!</p>
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Mensajes de Contacto</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Asunto</th>
+                <th>Correo</th>
+                <th>Fecha de envio</th>
+                <th>Responder</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let mensaje of mensajes">
+  
+              <tr>
+                <td>{{mensaje?.nombre}}</td>
+                <td>{{mensaje?.asunto}}</td>
+                <td>{{mensaje?.email}}</td>
+                <td>{{mensaje?.fecha_creacion}}</td>
+                <td class="text-center">
+                    <button class="btn btn-primary btn-sm"
+                  routerLink="./{{mensaje.id}}"><i class="fas fa-edit"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
