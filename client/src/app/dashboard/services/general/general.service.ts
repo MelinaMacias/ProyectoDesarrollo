@@ -32,4 +32,10 @@ export class GeneralService {
 
   }
 
+  getRegistrosRespuestaMensajes(id: number) {
+
+    return this.http.get(`${environment.main_url}/respuestas-mensajes/${id}/`, this.httpOptions);
+
+  }
+
 }

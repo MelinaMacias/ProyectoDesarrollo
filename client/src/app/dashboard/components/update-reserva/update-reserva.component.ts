@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -19,10 +20,10 @@ export class UpdateReservaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private reservaService : ReservasService,
     private notifaciones: NotificacionesService
-  ) { 
+  ) {
 
     this.detalleField = new FormControl('', [Validators.required, Validators.minLength(10)])
     this.numeroAsientosField = new FormControl('', [Validators.required, Validators.minLength(20)])
@@ -43,14 +44,13 @@ export class UpdateReservaComponent implements OnInit {
           this.fechaReservaField.setValue(reserva.fechaReserva);
           this.reserva = reserva;
         });
-  
+
       });
 
   }
 
-
   editarReserva(){
-  
+
     this.reserva.detalle = this.detalleField.value;
     this.reserva.numeroAsientos=this.numeroAsientosField.value;
     this.reserva.fechaReserva = this.fechaReservaField.value;
