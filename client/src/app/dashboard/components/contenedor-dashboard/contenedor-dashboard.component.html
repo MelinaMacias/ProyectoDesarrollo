@@ -11,7 +11,7 @@
         <a href="index3.html" class="nav-link" routerLink='/'>Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link"routerLink='./mensajes-contacto'>Contacto</a>
+        <a href="#" class="nav-link" routerLink='./mensajes-contacto'>Contacto</a>
       </li>
     </ul>
 
@@ -160,15 +160,25 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <div hasRoles [roles]="['superuser']">
-            <li class="nav-item">
-              <a routerLink="/dashboard/" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Administración general
-                </p>
-              </a>
-            </li>
+          <div hasRoles [roles]="['staff']">
+            <div hasRoles [roles]="['superuser']">
+              <li class="nav-item">
+                <a routerLink="/dashboard/" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Administración general
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/dashboard/personal" class="nav-link" routerLinkActive="active">
+                  <i class="fas fa-users"></i>
+                  <p>
+                    Personal
+                  </p>
+                </a>
+              </li>
+            </div>
             <li class="nav-item">
               <a routerLink="menus" class="nav-link" routerLinkActive="active">
                 <i class="fas fa-hamburger"></i>
@@ -200,14 +210,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a routerLink="comentarios" class="nav-link" routerLinkActive="active">
               <i class="far fa-comments"></i>
               <p>
                 Comentarios
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a routerLink="perfil" class="nav-link" routerLinkActive="active">
               <i class="far fa-user"></i>

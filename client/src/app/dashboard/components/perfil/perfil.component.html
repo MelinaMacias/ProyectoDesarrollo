@@ -1,1 +1,60 @@
-<p>perfil works!</p>
+
+<div class="row">
+  <div class="col-8" style="left: 20%; margin-bottom: 12px;">
+    <div class="card card-widget widget-user">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-info">
+        <h3 class="widget-user-username"><strong>{{perfil?.first_name}} {{perfil?.last_name}}</strong></h3>
+        <h5 class="widget-user-desc mt-1">
+          Tipo de cuenta:
+          <span hasRoles [roles]="['superuser']">Administrador</span>
+          <span hasRoles [roles]="['staff']"> Staff</span>
+          <span hasRoles [roles]="['simpleuser']">Cliente</span>
+        </h5>
+      </div>
+      <div class="widget-user-image">
+        <img class="img-circle elevation-2" src="assets/images/dashboard/blank.png" alt="User Avatar">
+      </div>
+      <div class="card-footer">
+
+        <div class="form-group">
+          <label for="">Nombre</label>
+          <input type="text" class="form-control" id="nombreField"
+            [formControl] = "nombreField"
+            [value]="perfil?.first_name"
+            placeholder="Ingrese su nombre">
+        </div>
+
+        <div class="form-group">
+          <label for="">Apellido</label>
+          <input type="text" class="form-control" id="apellidoField"
+            [formControl] = "apellidoField"
+            [value] = "perfil?.last_name"
+            placeholder="Ingrese su apeliido">
+        </div>
+
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="email" class="form-control" id="emailField"
+            [formControl] = "emailField"
+            [value] = "perfil?.email"
+            placeholder="Ingrese el nuevo correo">
+        </div>
+
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="password" class="form-control" id="passwordField"
+            [formControl] = "passwordField"
+            placeholder="Si desea modificar su contraseña rellene este campo">
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="btn btn-primary col-5" (click)="actualizarPerfil()">
+            Actualizar perfil
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

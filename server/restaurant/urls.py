@@ -11,7 +11,10 @@ urlpatterns = [
 
     # API
     path('api/', include('restaurant.routes')),
-    path('api/estadisticas/', estadisticas),
+    
+    # Graficas y estadísticas
+    path('api/estadisticas/', estadisticas_generales),
+    path('api/estadisticas-staff/', estadisticas_staff),
 
     path('api/contacto/', list_mensajes),
     path('api/contacto/create', create_mensaje),

@@ -1,17 +1,16 @@
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/auth/authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class IsAdminGuard implements CanActivate {
+export class IsStaffGuard implements CanActivate {
 
   constructor(
-    private authService:AuthenticationService,
-    private router: Router) {
+    private router: Router,
+    private authService:AuthenticationService) {
 
   }
 
@@ -19,7 +18,7 @@ export class IsAdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
 
-    if(this.authService.hasRole("superuser")) {
+    if(this.authService.hasRole("staff")) {
       return true; }
 
     this.router.navigate(['/dashboard/perfil']);

@@ -1,19 +1,93 @@
 
-import datetime
-from django.contrib.auth.models import User
-from django.db.models import fields
-from rest_framework import serializers
-from .models import *
+import random
+import threading
 
-class UserSerializar(serializers.ModelSerializer):
+from django.contrib.auth.models import User
+from rest_framework import serializers
+
+from restaurant.models import *
+from restaurant.utils import *
+
+class NoticeSimpleSerializer(serializers.ModelSerializer):
     
+    class Meta:
+        model = Notice
+        fields = "__all__"
+
+
+class NoticeUserSerializer(serializers.ModelSerializer):
+
+    notice_set = NoticeSimpleSerializer(many=True, read_only=True)
+
     class Meta:
         model = User
         fields = [
+            'first_name',
+            'last_name',
+            'notice_set'
+        ]
+
+
+class UserSerializar(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
             'username',
             'first_name',
-            'last_name'
+            'last_name',
+            'is_staff',
+            'email',
+            'is_active',
+            'password',
         ]
+        read_only_fields = ["noticias"]
+        extra_kwargs = {
+            "password": { "write_only": True }
+        }
+
+    
+    def create(self, data):
+
+        tmp_password = random.randint(1000, 9999)
+
+        nuevoUsuario = User.objects.create_user(
+            username = data.get("username"),
+            first_name = data.get("first_name"),
+            last_name = data.get("last_name"),
+            is_staff = data.get("is_staff"),
+            email = data.get("email"),
+            is_active = data.get("is_active"),
+            password = str(tmp_password)
+        )
+        
+        email = email_from_template(
+            "Bienvenido",
+            data.get("email"),
+            "Bienvenido",
+            "mail/notificacion_cuenta.html",
+            data = { "username": data.get("username"), "password": tmp_password }
+        )
+        
+        threading.Thread(target=send_email_now, args=(email, )).start()
+
+        return data
+
+    def update(self, perfil, data):
+
+        perfil.first_name = data.get("first_name", perfil.first_name)
+        perfil.last_name = data.get("last_name", perfil.last_name)
+        perfil.email = data.get("email", perfil.email)
+        perfil.is_active = data.get("is_active", perfil.is_active)
+
+        if(data.get("password")):
+            perfil.set_password( data.get("password") )
+        
+        perfil.save()
+
+        return perfil
+
 
 class NoticeSerializer(serializers.ModelSerializer):
     
@@ -33,6 +107,7 @@ class NoticeSerializer(serializers.ModelSerializer):
         notice.save()
 
         return notice
+
 
 class NoticiaCreateSerializer(serializers.ModelSerializer):
 
@@ -64,6 +139,7 @@ class NoticiaCreateSerializer(serializers.ModelSerializer):
         )
 
         return newNotice
+
 
 class PlatoCreateSerializer(serializers.ModelSerializer):
 
@@ -111,9 +187,11 @@ class PlatoSerializer(serializers.ModelSerializer):
     def update(self, plato, data):
 
         plato.title = data.get("title", plato.title)
-        plato.description = data.get("description", plato.description)
-        plato.urlimage = data.get("urlimage", plato.urlimage)
+        plato.price = data.get("price", plato.price)
         plato.likes = data.get("likes", plato.likes)        
+        plato.urlimage = data.get("urlimage", plato.urlimage)
+        plato.description = data.get("description", plato.description)
+        
         plato.save()
 
         return plato

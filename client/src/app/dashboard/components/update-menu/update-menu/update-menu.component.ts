@@ -22,10 +22,10 @@ export class UpdateMenuComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private menuService : MenuService,
     private notifaciones: NotificacionesService
-  ) { 
+  ) {
 
     this.titleField = new FormControl('', [Validators.required, Validators.minLength(10)])
     this.descriptionField = new FormControl('', [Validators.required, Validators.minLength(20)])
@@ -47,15 +47,16 @@ export class UpdateMenuComponent implements OnInit {
           this.priceField.setValue(plato.price);
           this.imageUrlField.setValue(plato.urlimage);
           this.plato = plato;
+
         });
-  
+
       });
 
   }
 
 
   editarPlato(){
-  
+
     this.plato.title = this.titleField.value;
     this.plato.description=this.descriptionField.value;
     this.plato.price = this.priceField.value;

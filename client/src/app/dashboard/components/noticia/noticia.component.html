@@ -16,16 +16,16 @@
               <th style="width: 40px">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let noticia of noticias">
+          <tbody>
 
-            <tr id="noticia-{{noticia.id}}">
+            <tr id="noticia-{{noticia.id}}" *ngFor="let noticia of noticias">
               <td>{{noticia?.id}}</td>
               <td>{{noticia?.title}}</td>
               <td>{{noticia?.description}}</td>
               <td>
                 <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm"
                   routerLink="./{{noticia.id}}"><i class="fas fa-edit"></i></button>
-                <button style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(noticia)">
+                <button hasRoles [roles]="['superuser']" style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(noticia)">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </td>

@@ -20,6 +20,9 @@ import { CreateNoticiaComponent } from './components/create-noticia/create-notic
 import { UpdateNoticiaComponent } from './components/update-noticia/update-noticia/update-noticia.component';
 import { NoticiasBarComponent } from './components/graficos/noticias/noticias-bar/noticias-bar.component';
 import { MensajeRespuestaComponent } from './components/mensaje-respuesta/mensaje-respuesta.component';
+import { PersonalComponent } from './components/personal/personal/personal.component';
+import { CrearPersonalComponent } from './components/personal/crear-personal/crear-personal.component';
+import { ActualizarPersonalComponent } from './components/personal/actualizar-personal/actualizar-personal.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { MensajeRespuestaComponent } from './components/mensaje-respuesta/mensaj
     CreateNoticiaComponent,
     UpdateNoticiaComponent,
     NoticiasBarComponent,
-    MensajeRespuestaComponent
+    MensajeRespuestaComponent,
+    PersonalComponent,
+    CrearPersonalComponent,
+    ActualizarPersonalComponent
   ],
   imports: [
     CommonModule,

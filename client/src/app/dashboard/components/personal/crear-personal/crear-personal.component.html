@@ -1,0 +1,61 @@
+<a routerLink=".." class="btn btn-block btn-default col-2 pt-2"><i class="fas fa-arrow-left"></i> Regresar</a>
+
+<div class="card mt-4">
+  <div class="card-header">
+    <h3 class="card-title fw-bold"><span class="text-center">Nueva cuenta</span></h3>
+  </div>
+
+  <div class="card-body">
+
+    <div class="row">
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Username </label>
+          <input type="text" [formControl]="usernameField" class="form-control"
+            placeholder="Ingrese el usuario para la cuenta">
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Correo </label>
+          <input type="email" [formControl]="emailField" class="form-control"
+            placeholder="Ingrese el correo para la cuenta">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="" class=" pr-2">Nombre </label>
+          <input type="text" [formControl]="nombreField" class="form-control"
+            placeholder="Ingrese el nombre de la persona">
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label for="" class=" pr-2">Apellido </label>
+          <input type="email" [formControl]="apellidoField" class="form-control"
+            placeholder="Ingrese el apellido de la persona">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" [formControl]="isActiveField" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Activar cuenta</label>
+    </div>
+
+    <br>
+
+    <button type="button" class="btn btn-primary fw-bold col-6" (click)="crearCuenta()">Registrar cuenta</button>
+
+  </div>
+
+</div>

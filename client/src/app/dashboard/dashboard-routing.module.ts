@@ -11,10 +11,14 @@ import { MensajesContactoComponent } from './components/mensajes-contacto/mensaj
 import { MenuComponent } from './components/menu/menu.component';
 import { NoticiaComponent } from './components/noticia/noticia.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { ActualizarPersonalComponent } from './components/personal/actualizar-personal/actualizar-personal.component';
+import { CrearPersonalComponent } from './components/personal/crear-personal/crear-personal.component';
+import { PersonalComponent } from './components/personal/personal/personal.component';
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
 import { UpdateMenuComponent } from './components/update-menu/update-menu/update-menu.component';
 import { UpdateNoticiaComponent } from './components/update-noticia/update-noticia/update-noticia.component';
 import { IsAdminGuard } from './guards/auth/is-admin/is-admin.guard';
+import { IsStaffGuard } from './guards/auth/is-staff/is-staff.guard';
 
 const routes: Routes = [
   {
@@ -27,44 +31,59 @@ const routes: Routes = [
         canActivate: [IsAdminGuard]
       },
       {
+        path: "personal",
+        component: PersonalComponent,
+        canActivate: [IsAdminGuard]
+      },
+      {
+        path: "personal/crear",
+        component: CrearPersonalComponent,
+        canActivate: [IsAdminGuard]
+      },
+      {
+        path: "personal/:id",
+        component: ActualizarPersonalComponent,
+        canActivate: [IsAdminGuard]
+      },
+      {
         path: "menus",
         component: MenuComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "menus/crear",
         component: CreateMenuComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "menus/:id",
         component: UpdateMenuComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "noticias",
         component: NoticiaComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "noticias/crear",
         component: CreateNoticiaComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "noticias/:id",
         component: UpdateNoticiaComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "mensajes-contacto",
         component: MensajesContactoComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "mensajes-contacto/:id",
         component: MensajeRespuestaComponent,
-        canActivate: [IsAdminGuard]
+        canActivate: [IsStaffGuard]
       },
       {
         path: "reservaciones",

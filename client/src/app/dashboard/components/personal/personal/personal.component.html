@@ -1,0 +1,46 @@
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Personal interno</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <button class="btn btn-primary mb-4" routerLink="./crear">Agregar nueva cuenta</button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Username</th>
+              <th class="text-center">Activo</th>
+              <th style="width: 40px">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="cuenta-{{perfil.id}}" *ngFor="let perfil of perfiles">
+              <td>{{perfil.id}}</td>
+              <td>{{perfil.first_name}}</td>
+              <td>{{perfil.last_name}}</td>
+              <td>{{perfil.username}}</td>
+              <td class="text-center">
+                <i *ngIf="perfil.is_active" class="fas fa-user-plus text-success"></i>
+                <i *ngIf="!perfil.is_active" class="fas fa-user-times text-danger"></i>
+              </td>
+              <td>
+                <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm"
+                  routerLink="./{{perfil.id}}"><i class="fas fa-edit"></i></button>
+                <button style="font-size: 12px" class="btn btn-danger btn-sm"
+                  (click)="borrarPerfil(perfil.id)"><i class="fas fa-trash-alt"></i></button>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

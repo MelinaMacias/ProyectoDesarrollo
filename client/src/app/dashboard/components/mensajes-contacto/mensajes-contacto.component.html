@@ -2,11 +2,15 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Mensajes de Contacto</h3>
+          <h3 class="card-title">Mensajes por contestar</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table class="table table-bordered">
+          <div class="row" *ngIf="mensajes.length == 0">
+            <i class="fas fa-envelope-open-text" style="font-size: 200px; opacity: 0.7; margin-left: 12px;"></i>
+            <span style="font-size: 50px; opacity: 0.7; padding: 20px 0px 0px 12px;">No existen mensajes pendientes</span>
+          </div>
+          <table class="table table-bordered" *ngIf="mensajes.length != 0">
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -17,7 +21,7 @@
               </tr>
             </thead>
             <tbody *ngFor="let mensaje of mensajes">
-  
+
               <tr>
                 <td>{{mensaje?.nombre}}</td>
                 <td>{{mensaje?.asunto}}</td>

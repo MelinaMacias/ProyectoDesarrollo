@@ -9,9 +9,15 @@ export class NotificacionesService {
 
 
   constructor(private toastService: ToastrService) { }
-  
+
   notificacionesExitosas(mensajes:Array<string>){
     mensajes.forEach(this.notificacionExitosa);
+  }
+
+  notificacionErronea(mensaje: string){
+
+    this.toastService.error(mensaje);
+
   }
 
   notificacionExitosa(mensaje:string){
@@ -21,7 +27,7 @@ export class NotificacionesService {
   }
 
   notificacionErrores(errores:any){
-   
+
     let errors = Object.keys(errores.error);
     errors.forEach( (campoErroneo) => {
       errores.error[campoErroneo].forEach( (error:any) => {

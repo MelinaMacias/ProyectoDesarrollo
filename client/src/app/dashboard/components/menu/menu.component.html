@@ -18,8 +18,8 @@
               <th style="width: 40px">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let plato of platos">
-            <tr id="plato-{{plato.id}}">
+          <tbody>
+            <tr id="plato-{{plato.id}}" *ngFor="let plato of platos">
               <td>{{plato?.id}}</td>
               <td>{{plato?.title}}</td>
               <td>{{plato?.description}}</td>
@@ -27,7 +27,7 @@
               <td>
                 <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm"
                   routerLink="./{{plato.id}}"><i class="fas fa-edit"></i></button>
-                <button style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(plato)"><i
+                <button hasRoles [roles]="['superuser']" style="font-size: 12px" class="btn btn-danger btn-sm" (click)="borrar(plato)"><i
                     class="fas fa-trash-alt"></i></button>
               </td>
 

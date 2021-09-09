@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 
-# Create your models here.
 class Plato(models.Model):
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=5, decimal_places=2)

@@ -5,7 +5,10 @@ def jwt_custom_payload_handler(user):
 	
 	payload = jwt_payload_handler(user)
 	payload['roles'] = [ 
-		'superuser' if (user.is_superuser) else 'simpleuser' 
+		'staff' if (user.is_staff) else 'simpleuser'
 	]
+
+	if(user.is_superuser):
+		payload['roles'].append('superuser')
 	
 	return payload

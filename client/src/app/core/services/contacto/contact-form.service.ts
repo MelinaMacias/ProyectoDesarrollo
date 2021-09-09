@@ -29,7 +29,7 @@ export class ContactFormService {
   }
 
   createMessage(body:MensajeContacto) {
-    return this.http.post<Object>(`${environment.main_url}/contacto/create`, body, this.httpOptions);
+    return this.http.post<Object>(`${environment.main_url}/contacto/create`, body);
   }
 
   getMensaje(idMensaje: string){
