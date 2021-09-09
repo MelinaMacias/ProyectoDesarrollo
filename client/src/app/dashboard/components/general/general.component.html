@@ -62,3 +62,57 @@
   <!-- ./col -->
 </div>
 <app-noticias-bar></app-noticias-bar>
+
+<div class="row justify-content-between">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header ui-sortable-handle" style="cursor: move;">
+        <h3 class="card-title">
+          <i class="fas fa-chart-bar mr-1"></i>
+          <strong>Registro de mensajes respondidos</strong>
+        </h3>
+      </div><!-- /.card-header -->
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-sm-4">
+            <!-- select -->
+            <div class="form-group">
+              <label>Personal staff</label>
+              <select class="custom-select" (change)="getRegistros($event)">
+                <option selected>Seleccione un usuario del staff</option>
+                <option  *ngFor = "let usuario of usuariosStaff"
+                  [value]="usuario?.id">{{usuario?.first_name}} {{usuario?.last_name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Fecha de creación</th>
+              <th>Fecha de respuesta</th>
+              <th class="text-center">Asunto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr id="registro-{{registro.id}}" *ngFor="let registro of registroRespuestas"> -->
+            <tr id="registro" *ngFor="let registro of registroRespuestas">
+              <td>{{registro?.id_staff}}</td>
+              <td>{{registro?.nombre_receptor}}</td>
+              <td>{{registro?.email_receptor}}</td>
+              <td class="text-center">{{registro?.fecha_creacion}}</td>
+              <td class="text-center">{{registro?.fecha_respuesta}}</td>
+              <td>{{registro?.asunto}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

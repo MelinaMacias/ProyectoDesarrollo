@@ -307,11 +307,18 @@ def estadisticas_staff(request):
             } for x in usuarios_noticias.data 
         ],
         
-        "mensajes_contacto": {
-            "no_contestados": 100 * mensajesNoContestados / totalMensajes, 
-            "contestados": 100 * mensajesContestados / totalMensajes
+        "mensajes_contacto": [
+            {
+                "tag": "no_contestados",
+                "valor": 100 * mensajesNoContestados / totalMensajes,
+                "Released": "2021"
+            },
+            {
+                "tag": "contestados",
+                "valor": 100 * mensajesContestados / totalMensajes
+            }
             
-        }
+        ]
 
     }
 
@@ -362,3 +369,25 @@ class ReservaView(ModelViewSet):
         Reserva.objects.filter(id = pk).delete()
 
         return Response( ReservaSerializer(instance).data, status=status.HTTP_200_OK )
+
+
+@api_view(["GET"])
+@permission_classes([ IsAuthenticated ])
+def registro_respuestas_mensajes(request, id):
+    
+    respuestas = []
+    respuestasDB = adminMensajeCollection.find({'id_staff': id})
+
+    for respuesta in respuestasDB:
+        respuestas.append({
+            "id_staff": str(respuesta.get('id_staff')),
+            "nombre_receptor": respuesta.get('mensaje').get("nombre"),
+            "email_receptor": respuesta.get('mensaje').get("email"),
+            "asunto": respuesta.get('mensaje').get("asunto"),
+            "respuesta": respuesta.get('respuesta'),
+            "fecha_creacion": respuesta.get('mensaje').get("fecha_creacion"),
+            "fecha_respuesta": respuesta.get('fecha_respuesta')
+        })
+    
+    return Response(respuestas)
+

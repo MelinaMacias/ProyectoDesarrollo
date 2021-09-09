@@ -19,6 +19,7 @@ urlpatterns = [
     path('api/contacto/', list_mensajes),
     path('api/contacto/create', create_mensaje),
     path('api/contacto/<str:id>/', retrieve_mensajes),
-    path('api/contacto/update/<str:id>/', update_mensaje)
+    path('api/contacto/update/<str:id>/', update_mensaje),
+    path('api/respuestas-mensajes/<int:id>/', registro_respuestas_mensajes)
 
 ]

@@ -18,12 +18,12 @@
               </tr>
             </thead>
             <tbody>
-  
+
               <tr id="reserva-{{reserva.id}}" *ngFor="let reserva of reservas">
                 <td>{{reserva?.id}}</td>
                 <td>{{reserva?.fechaReserva}}</td>
                 <td>{{reserva?.detalle}}</td>
-                <td>{{reserva?.numeroAsientos}}</td>
+                <td class="text-center">{{reserva?.numeroAsientos}}</td>
                 <td>
                   <button style="margin-right: 4px; font-size: 12px" class="btn btn-primary btn-sm"
                     routerLink="./{{reserva.id}}"><i class="fas fa-edit"></i></button>
@@ -38,4 +38,4 @@
       </div>
     </div>
   </div>
-  
+
