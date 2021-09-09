@@ -50,6 +50,9 @@
                 <button [disabled]="usernameField.invalid || passwordField.invalid" type="submit"
                   class="btn btn-primary" (click)="authUser()">Iniciar sesión</button>
               </div>
+              <div class="d-grid gap-2 pt-2">
+                <button class="btn btn-primary" routerLink="../registro">Crear Usuario</button>
+              </div>
             </form>
           </div>
         </div>
