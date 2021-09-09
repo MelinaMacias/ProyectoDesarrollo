@@ -13,6 +13,7 @@ import { CoreModule } from '../core/core.module';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreacionClienteComponent } from './components/cliente/creacion-cliente/creacion-cliente.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LocationComponent,
     HomeComponent,
     LayoutComponent,
+    CreacionClienteComponent,
 
   ],
   imports: [

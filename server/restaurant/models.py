@@ -66,7 +66,7 @@ class Comentario(models.Model):
 class Reserva(models.Model):
     fechaCreacion = models.DateTimeField(auto_now_add = True)
     fechaModificacion = models.DateTimeField(auto_now = True)
-    fechaReserva = models.DateTimeField()
+    fechaReserva = models.CharField(max_length= 20)
     numeroAsientos = models.IntegerField()
     detalle = models.TextField()
     

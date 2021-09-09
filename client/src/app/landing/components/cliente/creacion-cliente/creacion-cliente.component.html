@@ -1,0 +1,72 @@
+<div id="auth">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center mb-0">
+                <img src="assets/images/logo-db2.png" height="150" class='mb-0'>
+              </div>
+              <h3 class="text-center pt-2 fw-bold">Formulario de registro</h3>
+              <form action="index.html">
+                <!-- <div *ngIf="loginError" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                  Credenciales incorrectas
+                </div> -->
+  
+                <div class="form-group position-relative has-icon-left">
+                  <label for=""> Nombre</label>
+                  <div class="position-relative">
+                    <input name="nombre" type="text" id="nombre" class="form-control"
+                      placeholder="Ingrese su Nombre*"
+                      required="" [formControl]="nombreField">
+                    <div *ngIf="nombreField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                      Nombre incorrecto
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group position-relative has-icon-left">
+                    <label for=""> Apellido </label>
+                    <div class="position-relative">
+                      <input name="nombre" type="text" id="nombre" class="form-control"
+                        placeholder="Ingrese su Apellido*"
+                        required="" [formControl]="apellidoField">
+                      <div *ngIf="apellidoField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                        Apellido incorrecto
+                      </div>
+                    </div>
+                  </div>
+                <div class="form-group position-relative has-icon-left">
+                  <label for="username">Usuario</label>
+                  <div class="position-relative">
+                    <input [formControl]="usuarioField" type="text" class="form-control" placeholder="Ingrese su usuario">
+                    <div *ngIf="usuarioField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                      Nombre de Usuario no permitido
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group position-relative has-icon-left">
+                  <label for="">Correo</label>
+                  <div class="position-relative">
+                    <input [formControl]="correoField" type="text" class="form-control"
+                      placeholder="Ingrese su dirección de correo">
+                      <div *ngIf="correoField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                        Correo no valido
+                      </div>
+                  </div>
+                </div>
+                <div class="d-grid gap-2">
+                  <button [disabled]="usuarioField.invalid"
+                    type="submit" class="btn btn-primary col-12"
+                    (click)="crearCuenta()">Registrarse</button>
+                </div>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

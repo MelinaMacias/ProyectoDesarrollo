@@ -15,8 +15,10 @@ import { ActualizarPersonalComponent } from './components/personal/actualizar-pe
 import { CrearPersonalComponent } from './components/personal/crear-personal/crear-personal.component';
 import { PersonalComponent } from './components/personal/personal/personal.component';
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
 import { UpdateMenuComponent } from './components/update-menu/update-menu/update-menu.component';
 import { UpdateNoticiaComponent } from './components/update-noticia/update-noticia/update-noticia.component';
+import { UpdateReservaComponent } from './components/update-reserva/update-reserva.component';
 import { IsAdminGuard } from './guards/auth/is-admin/is-admin.guard';
 import { IsStaffGuard } from './guards/auth/is-staff/is-staff.guard';
 
@@ -86,7 +88,15 @@ const routes: Routes = [
         canActivate: [IsStaffGuard]
       },
       {
-        path: "reservaciones",
+        path: "reservas",
+        component: ReservasComponent
+      },
+      {
+        path: "reservas/:id",
+        component: UpdateReservaComponent
+      },
+      {
+        path: "reservas/crear",
         component: ReservacionesComponent
       },
       {
