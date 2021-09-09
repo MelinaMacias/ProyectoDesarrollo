@@ -1,5 +1,5 @@
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../../services/general/general.service';
 
@@ -13,15 +13,14 @@ export class GeneralComponent implements OnInit {
   estadisticas:any;
 
   constructor(
-    private generalService: GeneralService,
-  ) { }
+    private generalService: GeneralService) { }
 
   ngOnInit(): void {
-   
+
     this.generalService.getEstadisticas()
     .subscribe((estadistica) => {
       this.estadisticas = estadistica
-    })
+    });
 
   }
 

@@ -307,11 +307,18 @@ def estadisticas_staff(request):
             } for x in usuarios_noticias.data 
         ],
         
-        "mensajes_contacto": {
-            "no_contestados": 100 * mensajesNoContestados / totalMensajes, 
-            "contestados": 100 * mensajesContestados / totalMensajes
+        "mensajes_contacto": [
+            {
+                "tag": "no_contestados",
+                "valor": 100 * mensajesNoContestados / totalMensajes,
+                "Released": "2021"
+            },
+            {
+                "tag": "contestados",
+                "valor": 100 * mensajesContestados / totalMensajes
+            }
             
-        }
+        ]
 
     }
 
