@@ -1,1 +1,62 @@
-<p>reservaciones works!</p>
+<div id="auth">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center mb-0">
+                <img src="assets/images/logo-db2.png" height="150" class='mb-0'>
+              </div>
+              <h3 class="text-center pt-2 fw-bold">Formulario para reservaciones</h3>
+              <form action="index.html">
+                <!-- <div *ngIf="loginError" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                  Credenciales incorrectas
+                </div> -->
+  
+                <div class="form-group position-relative has-icon-left">
+                  <label for=""> Fecha y Hora de reserva</label>
+                  <div class="position-relative">
+                    <input name="nombre" type="text" id="nombre" class="form-control"
+                      placeholder="Ingrese una fecha YYYY-MM-DD HH:MM:SS*"
+                      required="" [formControl]="fechaField">
+                    <div *ngIf="fechaField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                      Fecha incorrecta
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group position-relative has-icon-left">
+                    <label for=""> Numero de Asientos </label>
+                    <div class="position-relative">
+                      <input name="nombre" type="text" id="nombre" class="form-control"
+                        placeholder="Ingrese la cantidad de asientos necesarios para su reserva*"
+                        required="" [formControl]="numeroAsientosField">
+                      <div *ngIf="numeroAsientosField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                        Cantidad incorrecta
+                      </div>
+                    </div>
+                  </div>
+                <div class="form-group position-relative has-icon-left">
+                  <label for="username">Detalle de la reserva</label>
+                  <div class="position-relative">
+                    <input [formControl]="detalleField" type="text" class="form-control" placeholder="Ingrese los detalles de su reseva">
+                    <div *ngIf="detalleField.invalid && formInvalid" style="margin-top: 4px;" class=" alert alert-danger" role="alert">
+                      Añada un detalle de reserva descriptivo
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="d-grid gap-2">
+                  <button [disabled]="numeroAsientosField.invalid"
+                    type="submit" class="btn btn-primary col-12" (click)= "crearReservacion()"
+                    >Registrarse</button>
+                </div>
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

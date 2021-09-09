@@ -23,6 +23,9 @@ import { MensajeRespuestaComponent } from './components/mensaje-respuesta/mensaj
 import { PersonalComponent } from './components/personal/personal/personal.component';
 import { CrearPersonalComponent } from './components/personal/crear-personal/crear-personal.component';
 import { ActualizarPersonalComponent } from './components/personal/actualizar-personal/actualizar-personal.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+import { UpdateReservaComponent } from './components/update-reserva/update-reserva.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { ActualizarPersonalComponent } from './components/personal/actualizar-pe
     MensajeRespuestaComponent,
     PersonalComponent,
     CrearPersonalComponent,
-    ActualizarPersonalComponent
+    ActualizarPersonalComponent,
+    ReservasComponent,
+    UpdateReservaComponent
   ],
   imports: [
     CommonModule,

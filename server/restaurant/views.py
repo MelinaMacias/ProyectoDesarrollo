@@ -324,3 +324,48 @@ def estadisticas_staff(request):
 
     return Response(estadisticas)
 
+
+class ReservaView(ModelViewSet):
+
+    serializer_class = ReservaSerializer
+    queryset = Reserva.objects.all()
+
+    def list(self, request):
+        datos = ReservaSerializer(self.get_queryset(), many = True)
+
+        return Response(datos.data)
+
+    def retrieve(self, request, pk):
+
+        plato = Reserva.objects.get(id = pk)
+        datos = ReservaSerializer(plato)
+
+        return Response(datos.data)
+    
+
+    def create(self, request):
+        
+        data = self.get_serializer(data = request.data)
+        data.is_valid(raise_exception=True)
+        
+        newReserva = ReservaSerializer(data.save())
+        
+        return Response(newReserva.data, status=status.HTTP_201_CREATED)
+
+    
+    def update(self, request, pk):
+
+        instance = Reserva.objects.get(id = pk)
+        serializer = ReservaSerializer(instance, data = request.data, partial=True)
+        serializer.is_valid(raise_exception = True)
+        newReserva = ReservaSerializer(serializer.save())
+
+        return Response(newReserva.data, status=status.HTTP_200_OK)
+
+    def destroy(self, request,pk):
+
+        instance = Reserva.objects.get(id = pk)
+
+        Reserva.objects.filter(id = pk).delete()
+
+        return Response( ReservaSerializer(instance).data, status=status.HTTP_200_OK )
